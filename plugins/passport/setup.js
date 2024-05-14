@@ -18,11 +18,9 @@ module.exports = function(app, process) {
     //     store: new MongoStore({
     //         mongoUrl: "mongodb+srv://"+process.env.MONUSR+":"+encodeURIComponent(process.env.MONPASS)+"@royalcluster.sda0nl3.mongodb.net/"+config.DB_NAME+"?retryWrites=true&w=majority"
     //     }),
-  
+
     // }));
 
     app.use(passport.initialize());
     app.use(passport.session());
 };
-
-
