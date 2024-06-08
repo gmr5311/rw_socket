@@ -42,7 +42,7 @@
     "passport-yahoo-oauth": "^0.2.0",
     "puppeteer": "^20.3.0",
     "session": "^0.1.0",
-    "sharp": "^0.33.3",
+    "sharp": "^0.33.4",
     "socket.io": "^4.7.4",
     "stripe": "^13.6.0"
   }
