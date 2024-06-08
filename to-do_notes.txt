@@ -1,2 +1,0 @@
-- need to include test. consider using something like jest to ensure nothing breaks and things are added
-- keep tools agnostic of operating system or archetecture whenever possible. when not possible default to linux functional tools because they are more universally accepted on standard deployment options.
