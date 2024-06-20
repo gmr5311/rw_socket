@@ -18,7 +18,7 @@ console.log(req.file.filename)
 console.log(req.file.path)
     // Assuming processImage middleware has set req.file.path to the processed image
     const imagePath = req.file.path;
-    const fileKey = `${user._id}/${req.file.filename}`;
+    const fileKey = `rw_users_/${user._id}/${req.file.filename}`;
     const fileBuffer = req.file.buffer;
     console.log('Uploading to Linode...');
     const bucketUrl = await uploadToLinode(imagePath, fileKey);
@@ -55,8 +55,8 @@ console.log(req.file.path)
     });
 
     console.log('MongoDB updated with image and thumbnail URLs.');
-
-    res.send({ success: true, urls: { main: bucketUrl, thumbnail: thumbnailUrl } });
+res.render('/',{success:false,message:"avatar uploaded sucessfully"})
+    //res.send({ success: true, urls: { main: bucketUrl, thumbnail: thumbnailUrl } });
   } catch (error) {
     console.error("Error in userImgUpload endpoint:", error);
    // res.status(500).send({ success: false, message: error.message });

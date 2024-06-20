@@ -49,9 +49,14 @@ const newUser = async (profile, provider) => {
       clubs:false,
       blogs:false,
       webapp:false,
+      permissions:false,
 
     },
-    wallet: {},
+    wallet: {
+      emerald:0,
+      sapphire:0,
+      amethyst:0
+    },
   };
 
   // Insert the new user into the database
@@ -105,7 +110,7 @@ passport.use(
           lib('login error: ', 'error: Email Not Found',  `Login Error:'email not found' , attempted email :${email} `,'errors.json','data')
           return done(null, false, {message:'Email not found, have you tried reigtering this email?'});
         }
-
+        //
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
           lib('login error: ', 'error: Password Does Not Match',  `Login Error:'bad password' , attempted email :${email} `,'errors.json','data')

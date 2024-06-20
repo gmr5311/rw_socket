@@ -159,8 +159,8 @@ input {
   #chat-window-basic {
     width: 92%;
     left: 100%;
-    top: 17vh;
-    height: 78vh;
+    top: 8vh;
+    height: 84vh;
     padding: 1%;
   }
 }
@@ -224,6 +224,10 @@ input {
   }
 }
 
+#header img {
+  max-width: 40px;
+}
+
 .dashHeader {
   display: flex;
   flex-direction: row; /* Align items horizontally */
@@ -266,6 +270,14 @@ input {
   width: 30px;
 }
 
+.user {
+  min-width: 100px;
+  border: 1px solid #d7b436;
+  overflow: hidden;
+  margin: 1px;
+  padding: 1;
+}
+
 .userNavLink {
   filter: invert(1);
   color: #d7b436;
@@ -288,7 +300,7 @@ input {
   width: 96%;
   margin: 2%;
   overflow-y: auto;
-  height: 57%;
+  height: 70%;
   box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.749);
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -298,13 +310,11 @@ input {
   width: 98%; /* Full width */
   padding: 0%;
   transition: all 0.3s ease; /* Smooth transition for shrinking */
-  justify-content: space-between; /* Space items appropriately */
-  align-items: center; /* Center items vertically */
   background-color: rgba(113, 24, 129, 0);
 }
 
 .banner img {
-  width: 100%; /* Ensure image fills the banner */
+  width: 87%; /* Ensure image fills the banner */
   transition: all 0.3s ease; /* Smooth transition for the image */
   height: auto; /* Maintain aspect ratio */
 }
@@ -340,7 +350,7 @@ input {
 
 #userList {
   width: 95%;
-  min-height: 95px;
+  min-height: 55px;
   margin: 2% 3%;
   display: flex;
   align-items: center; /* Ensure the circles are aligned in the center */
@@ -352,11 +362,41 @@ input {
   border-bottom-right-radius: 25px;
   background: linear-gradient(to left, rgb(168, 68, 158), rgba(122, 19, 98, 0.923));
 }
+.userInfoBox {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+  z-index: 1000;
+}
+
+.userInfoBox img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.userInfoBox .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.userInfoBox .icons img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.usersOnline {
+  cursor: pointer;
+}
+
 .usersOnline {
   background-color: #410b4b;
-  max-width: 55px;
-  min-width: 55px;
-  min-height: 55px;
+  max-width: 35px;
+  min-width: 35px;
+  min-height: 35px;
   border-radius: 50%;
   border: 3px solid gold; /* Assuming $gold is a variable, replace it with an actual color if you're not using a preprocessor */
   /* Overlap each circle by adjusting the X translation */
@@ -417,7 +457,7 @@ input {
 
 .message {
   display: grid;
-  grid-template-columns: 2fr 2fr 8fr;
+  grid-template-columns: 2fr 8fr 1fr;
   margin-bottom: 10px;
   width: 98%;
   padding: 5px;
@@ -438,9 +478,9 @@ input {
 
 .message img {
   background-color: #410b4b;
-  max-width: 55px;
-  min-width: 55px;
-  min-height: 55px;
+  max-width: 35px;
+  min-width: 35px;
+  min-height: 35px;
   border-radius: 50%;
   border: 3px solid gold;
   max-width: 40px;
@@ -474,6 +514,9 @@ input {
 }
 
 .auth_view_true {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -489,6 +532,9 @@ input {
 }
 
 .auth_view_false {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -580,6 +626,72 @@ input {
   max-height: 0;
   transform-style: preserve-3d;
   animation: flashMsg 2.8s ease-in-out 0s 1;
+}
+
+#localVideo {
+  width: 100%;
+}
+
+#remoteVideo {
+  width: 100%;
+}
+
+#game-container {
+  color: black;
+  width: 90%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.829);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.442);
+}
+
+#chatTabs {
+  overflow-y: scroll;
+  background-color: #c878d7;
+  display: flex;
+  min-width: 100%;
+  border-bottom: 2px solid #333; /* Border to separate tabs from content */
+}
+
+.tab_section {
+  color: #d7b436;
+  background-color: #410b4b;
+  flex: 1; /* Ensures tabs are equally spaced */
+  border: 1px solid #ccc; /* Border around each tab */
+  border-bottom: none; /* Remove bottom border to connect with content area */
+  padding: 10px; /* Padding for better click area */
+  text-align: center; /* Center text within tabs */
+  cursor: pointer; /* Pointer cursor to indicate clickable tabs */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 8px;
+}
+
+.tab_section:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  color: #410b4b; /* Text color change on hover */
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 8px;
+}
+
+.tab_section.join {
+  color: #d7b436;
+  background-color: #8a3898;
+}
+
+.tab_section.active {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: #d7b436; /* Active tab background color */
+  color: #711881; /* Active tab text color */
+  border-bottom: 2px solid #410b4b; /* Match the bottom border with background color */
 }
 
 /*# sourceMappingURL=style.css.map */

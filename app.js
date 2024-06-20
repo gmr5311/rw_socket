@@ -21,7 +21,7 @@ const sessionMiddleware = session({
   resave: true,
   saveUninitialized: true,
   store: MongoStore.create({
-      mongoUrl:"mongodb+srv://"+process.env.MONUSR+":"+encodeURIComponent(process.env.MONPASS)+"@royalcluster.sda0nl3.mongodb.net/"+config.DB_NAME+"?retryWrites=true&w=majority"
+      mongoUrl:"mongodb+srv://"+process.env.MONUSR+":"+encodeURIComponent(process.env.MONPASS)+config.DB_URL+config.DB_NAME+"?retryWrites=true&w=majority"
   })
 });
 
@@ -59,9 +59,15 @@ async function startApp() {
   app.use(express.static(path.join(__dirname, 'public')));
 
   const cors = require('cors');
-  app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
-
-
+  const corsOptions = {
+    origin: 'https://games.w2marketing.biz',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'user-id'],
+    credentials: true 
+  }
+  // Configure CORS to allow requests from your main domain
+  app.options("*",cors(corsOptions))
+  app.use(cors(corsOptions));
  
   app.use('/', indexRouter);
   app.use('/admin', adminRouter);
